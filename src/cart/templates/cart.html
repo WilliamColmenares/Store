@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>carrito</h1> 
+{% if not cart.products %}
+	<h1>No hay</h1>
+{% endif %}
+{% for p in cart.products.all %}
+	<a href={{ p.get_absolute_url }}>{{ p.title }}</a></br>
+{% endfor %}	 
+
+{% endblock %}

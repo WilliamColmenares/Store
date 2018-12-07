@@ -1,0 +1,36 @@
+{% load static %}
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-2" id="navbar">
+    <div class="container">
+      <a class="logonav col-3" href="#"><img width="90px" height="50px"src="{% static "img/logo.png"%}" style="position:relative;"></a>
+      <div class="col-6 my-auto mx-auto">
+        <form class="form" method="GET" action="{% url 'query' %}">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="q" value="{{ request.GET.q }}">
+            <div class="input-group-append">
+              <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></buttons>
+          </div>
+        </form>      
+        </div>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">    
+      </div>
+    </div>  
+  </nav>
+</header>
+
+
+
+
+<!-- 
+<div class="input-group">
+  <form class="form my-2 my-lg-0">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <div class="input-group-append">
+      <button class="input-group-btn btn btn-outline-c" type="submit">Buscar</button>
+    </div>
+  </form>
+</div>   -->
