@@ -1,14 +1,32 @@
 {% extends 'base.html' %}
-
+{% load mathfilters %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
+	<h1>carrito</h1> 
+	{{ cart.products.all }}
+	{% if not cart.products %}
+		<h1>No hay</h1>
+	{% endif %}
+	{% for p in cart.products.all %}
+		<a href={{ p.get_absolute_url }}>{{ p.title }}</a></br>
+	{% endfor %}
 
-<h1>carrito</h1> 
-{% if not cart.products %}
-	<h1>No hay</h1>
+{% else %}
+
+{{ cart }}<br/><br/><br/><br/>
+
+{% for item, quantity in cart.items %}
+	{{ item.title }}<br/>
+    {{ item.quantity }}<br/>
+    {{ item.price|mul:quantity }}
+
+{% endfor %}
+    <br/><br/><br/>
+    <h1>total: <strong>{{ total }}</strong></h1>
 {% endif %}
-{% for p in cart.products.all %}
-	<a href={{ p.get_absolute_url }}>{{ p.title }}</a></br>
-{% endfor %}	 
 
 {% endblock %}
+
+
+
